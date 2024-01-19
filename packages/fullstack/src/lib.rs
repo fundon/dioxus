@@ -45,7 +45,7 @@ pub mod prelude {
     #[cfg(all(feature = "ssr", feature = "router"))]
     pub use crate::render::pre_cache_static_routes_with_props;
     #[cfg(feature = "ssr")]
-    pub use crate::render::SSRState;
+    pub use crate::render::{RenderResponse, SSRState};
     #[cfg(feature = "router")]
     pub use crate::router::FullstackRouterConfig;
     #[cfg(feature = "ssr")]
@@ -58,7 +58,9 @@ pub mod prelude {
     };
     pub use crate::server_fn::DioxusServerFn;
     #[cfg(feature = "ssr")]
-    pub use crate::server_fn::{ServerFnMiddleware, ServerFnTraitObj, ServerFunction};
+    pub use crate::server_fn::{
+        DioxusServerFnRegistry, ServerFnMiddleware, ServerFnTraitObj, ServerFunction,
+    };
     pub use dioxus_server_macro::*;
     #[cfg(feature = "ssr")]
     pub use dioxus_ssr::incremental::IncrementalRendererConfig;

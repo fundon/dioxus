@@ -94,6 +94,10 @@ prettyplease = { package = "prettier-please", version = "0.2", features = [
     "verbatim",
 ] }
 
+# hyper 1.0
+hyper = "1.1.0"
+http = "1.0.0"
+
 # This is a "virtual package"
 # It is not meant to be published, but is used so "cargo run --example XYZ" works properly
 [package]

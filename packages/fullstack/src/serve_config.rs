@@ -150,7 +150,8 @@ pub struct ServeConfig<P: Clone> {
     pub(crate) app: Component<P>,
     pub(crate) props: P,
     pub(crate) index: IndexHtml,
-    pub(crate) assets_path: &'static str,
+    /// The assets path.
+    pub assets_path: &'static str,
     pub(crate) incremental:
         Option<std::sync::Arc<dioxus_ssr::incremental::IncrementalRendererConfig>>,
 }

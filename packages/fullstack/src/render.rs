@@ -305,8 +305,10 @@ impl<P: Clone + Serialize + Send + Sync + 'static> dioxus_ssr::incremental::Wrap
 /// A rendered response from the server.
 #[derive(Debug)]
 pub struct RenderResponse {
-    pub(crate) html: String,
-    pub(crate) freshness: RenderFreshness,
+    /// The rendered HTML.
+    pub html: String,
+    /// The freshness of the rendered HTML.
+    pub freshness: RenderFreshness,
 }
 
 impl RenderResponse {

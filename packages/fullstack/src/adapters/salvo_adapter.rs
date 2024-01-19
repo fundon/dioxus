@@ -470,7 +470,7 @@ impl ServerFnHandler {
                         .run(hyper_req)
                         .await
                         .unwrap();
-                
+
                 let (resp, body) = response.into_parts();
                 let body = http_body_util::BodyExt::collect(body)
                     .await
