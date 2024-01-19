@@ -11,11 +11,10 @@ use tokio::sync::{
 /// The hot-reload state.
 #[derive(Clone)]
 pub struct HotReloadState {
-    // The cache of all templates that have been modified since the last time we checked
-    pub(crate) templates:
-        Arc<RwLock<std::collections::HashSet<dioxus::prelude::Template<'static>>>>,
-    // The channel to send messages to the hot reload thread
-    pub(crate) message_receiver: Receiver<Option<Template<'static>>>,
+    /// The cache of all templates that have been modified since the last time we checked
+    pub templates: Arc<RwLock<std::collections::HashSet<dioxus::prelude::Template<'static>>>>,
+    /// The channel to send messages to the hot reload thread
+    pub message_receiver: Receiver<Option<Template<'static>>>,
 }
 
 impl Default for HotReloadState {
@@ -51,6 +50,8 @@ impl Default for HotReloadState {
 
 // Hot reloading can be expensive to start so we spawn a new thread
 static HOT_RELOAD_STATE: tokio::sync::OnceCell<HotReloadState> = tokio::sync::OnceCell::const_new();
+
+/// Spawns hot_reload.
 pub async fn spawn_hot_reload() -> &'static HotReloadState {
     HOT_RELOAD_STATE
         .get_or_init(|| async {
