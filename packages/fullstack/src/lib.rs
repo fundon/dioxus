@@ -16,7 +16,7 @@ mod adapters;
 pub use adapters::*;
 mod hooks;
 #[cfg(all(debug_assertions, feature = "hot-reload", feature = "ssr"))]
-mod hot_reload;
+pub mod hot_reload;
 pub mod launch;
 #[cfg(feature = "ssr")]
 mod layer;

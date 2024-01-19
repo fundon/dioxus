@@ -1,3 +1,5 @@
+//! The hot-reload state.
+
 use std::sync::Arc;
 
 use dioxus::prelude::Template;
@@ -6,6 +8,7 @@ use tokio::sync::{
     RwLock,
 };
 
+/// The hot-reload state.
 #[derive(Clone)]
 pub struct HotReloadState {
     // The cache of all templates that have been modified since the last time we checked
@@ -48,7 +51,7 @@ impl Default for HotReloadState {
 
 // Hot reloading can be expensive to start so we spawn a new thread
 static HOT_RELOAD_STATE: tokio::sync::OnceCell<HotReloadState> = tokio::sync::OnceCell::const_new();
-pub(crate) async fn spawn_hot_reload() -> &'static HotReloadState {
+pub async fn spawn_hot_reload() -> &'static HotReloadState {
     HOT_RELOAD_STATE
         .get_or_init(|| async {
             println!("spinning up hot reloading");
